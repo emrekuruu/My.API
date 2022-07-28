@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emre\\source\\repos\\Enrolled\\Enrolled.API.csproj": {}
+    "C:\\Users\\emre\\Source\\Repos\\My.API\\Enrolled.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emre\\source\\repos\\Enrolled\\Enrolled.API.csproj": {
+    "C:\\Users\\emre\\Source\\Repos\\My.API\\Enrolled.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emre\\source\\repos\\Enrolled\\Enrolled.API.csproj",
+        "projectUniqueName": "C:\\Users\\emre\\Source\\Repos\\My.API\\Enrolled.API.csproj",
         "projectName": "Enrolled.API",
-        "projectPath": "C:\\Users\\emre\\source\\repos\\Enrolled\\Enrolled.API.csproj",
+        "projectPath": "C:\\Users\\emre\\Source\\Repos\\My.API\\Enrolled.API.csproj",
         "packagesPath": "C:\\Users\\emre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emre\\source\\repos\\Enrolled\\obj\\",
+        "outputPath": "C:\\Users\\emre\\Source\\Repos\\My.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\emre\\AppData\\Roaming\\NuGet\\NuGet.Config",

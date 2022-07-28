@@ -2,7 +2,7 @@
 {
     public class Proffesor
     {
-        public string Pname { get; set; }
+        public string name { get; set; }
         public int salary { get; set; }
 
     }
