@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  enrolled.api:
+    image: ${DOCKER_REGISTRY-}enrolledapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+  enroldb:
+    image: postgres
+   
+  pgadmin:
+    image: dpage/pgadmin4  
+
+
+volumes:
+  postgres_data:
+  pgadmin_data:

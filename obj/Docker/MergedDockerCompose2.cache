@@ -1,0 +1,73 @@
+services:
+  enroldb:
+    build:
+      context: C:\Users\emre\source\repos\Enrolled
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Enrolled.API
+      target: base
+    container_name: Enrolled.API
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+      POSTGRES_DB: DiscountDb
+      POSTGRES_PASSWORD: admin1234
+      POSTGRES_USER: admin
+    image: postgres:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/Enrolled.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - published: 5432
+      target: 5432
+    restart: always
+    tty: true
+    volumes:
+    - C:\Users\emre\source\repos\Enrolled:/app:rw
+    - C:\Users\emre\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\emre\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\emre\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\emre\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\emre\source\repos\Enrolled:/src:rw
+    - postgres_data:/var/lib/postgresql/data/:rw
+  enrolled.api:
+    build:
+      context: C:\Users\emre\source\repos\Enrolled
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Enrolled.API
+      target: base
+    container_name: Enrolled.API_1
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: enrolledapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/Enrolled.API.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - C:\Users\emre\source\repos\Enrolled:/app:rw
+    - C:\Users\emre\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\emre\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\emre\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\emre\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\emre\source\repos\Enrolled:/src:rw
+version: '3.4'
+volumes:
+  postgres_data: {}
