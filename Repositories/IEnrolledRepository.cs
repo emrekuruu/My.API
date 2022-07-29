@@ -13,6 +13,8 @@ namespace Enrolled.API.Repositories
 
         Task<bool> EnrollStudent(int id,string ClassName);
 
+        Task<bool> DropOut(int id,string ClassName);
+
         Task<bool> TeachClass(string proffesor, string className);
 
         Task<bool> DeleteProffesor(string className);

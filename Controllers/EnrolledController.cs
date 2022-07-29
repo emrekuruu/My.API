@@ -126,7 +126,14 @@ namespace Enrolled.API.Controllers
             return Ok(affect);
         }
 
-
+        [HttpDelete]
+        [Route("Drop Out Of Class")]
+        [ProducesResponseType(typeof(bool), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<bool>> DropOut(int id,string className)
+        {
+            var affect = await _repository.DropOut(id,className);
+            return Ok(affect);
+        }
 
 
     }

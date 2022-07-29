@@ -66,6 +66,20 @@ namespace Enrolled.API.Repositories
 
         }
 
+        public async Task<bool> DropOut(int id, string ClassName)
+        {
+            using var connection = new NpgsqlConnection
+                (_configuration.GetValue<string>("DatabaseSettings:ConnectionString"));
+            var affected = await connection.ExecuteAsync("DELETE FROM ENROLL WHERE student_id = @ID AND  class_name = @ClassName", new { ClassName = ClassName, Id = id });
+
+            if (affected == 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public async Task<bool> TeachClass(string proffesor, string className)
         {
             using var connection = new NpgsqlConnection
